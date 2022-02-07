@@ -20,7 +20,6 @@ const opts = {
 
 exports.jwtPassport = passport.use(
   new JwtStrategy(opts, (jwtPayload, done) => {
-    console.log(jwtPayload);
     User.findOne({ _id: jwtPayload._id }, (err, user) => {
       if (err) return done(err, false);
       else if (user) return done(null, user);

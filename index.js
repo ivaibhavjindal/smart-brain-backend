@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const passport = require("passport");
+const { mongoUri } = require("./secrets");
 
 const app = express();
 
@@ -11,7 +12,7 @@ app.use(cors());
 app.use(passport.initialize());
 
 mongoose
-  .connect("mongodb://localhost:27017/smartBrain")
+  .connect(mongoUri, { useNewUrlParser: true })
   .then((res) => console.log("Mongo connection success"))
   .catch((err) => console.log("Mongo connection error\n", err));
 
@@ -21,4 +22,4 @@ const imageRouter = require("./routes/imageRouter");
 app.use("/users", userRouter);
 app.use("/models/images", imageRouter);
 
-app.listen(3000, () => console.log("server running"));
+app.listen(process.env.PORT || 3000, () => console.log("server running"));
