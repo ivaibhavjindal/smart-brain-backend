@@ -1,4 +1,4 @@
-# Smart Brain Frontend
+# Smart Brain Backend
 
 The easiest deep learning AI ecosystem for developers, data scientists, and no-code operators to run multiple real time deep learning models
 
